@@ -1,19 +1,13 @@
 
-
 let vastuSuhasCal = {
-    mValuesTypes:["Khshetraphal", "Aaya","Dhana","Vruna","Vaara","Tithi",
-                    "Nakshatra",
-                    "Yoga",
-                    "Karana",
-                    "Amsha",
-                    "Ayushya",
-                    "Dipalak"],
-    calculate: function(length, width){
+    mValuesTypes: ["Khshetraphal", "Aaya", "Dhana", "Vruna", "Vaara", "Tithi","Nakshatra","Yoga","Karana",
+        "Amsha","Ayushya","Dipalak"],
+    calculate: function (length, width) {
         const khshetraphal = length * width;
         let finalObj = {
-            cols:[],
-            totalGuna:0.0,
-            phal:""
+            cols: [],
+            totalGuna: 0.0,
+            phal: ""
         };
 
         for (let i = 0; i < this.mValuesTypes.length; i++) {
@@ -24,18 +18,18 @@ let vastuSuhasCal = {
         finalObj.phal = this.getPhalString(finalObj.totalGuna);
 
         return finalObj;
-    }, formatDecimal(num){
+    }, formatDecimal(num) {
         return (Math.round(num * 100) / 100).toFixed(2);
     },
-    getValues(type, khshetraphal){
+    getValues(type, khshetraphal) {
         switch (type) {
             case 0:
-                return {"col1":this.mValuesTypes[type], "col2":this.formatDecimal(khshetraphal), "col3":"","col4":"","col5":this.formatDecimal(khshetraphal), "col6":0};
+                return { "col1": this.mValuesTypes[type], "col2": this.formatDecimal(khshetraphal), "col3": "", "col4": "", "col5": this.formatDecimal(khshetraphal), "col6": 0 };
             case 1:
                 let aaya = khshetraphal * 9.0;
                 let aayaMod8 = Math.floor(aaya % 8.0);
                 let aayaGuna = (aayaMod8 % 2);
-                return {"col1":this.mValuesTypes[type], "col2":aaya, "col3":aayaMod8,"col4":aayaMod8,"col5":this.getAayaString(aayaMod8), "col6":aayaGuna};
+                return { "col1": this.mValuesTypes[type], "col2": aaya, "col3": aayaMod8, "col4": aayaMod8, "col5": this.getAayaString(aayaMod8), "col6": aayaGuna };
             case 2:
                 let dhana = khshetraphal * 8.0;
                 let dhanaMod12 = Math.floor(dhana % 12.0);
@@ -46,7 +40,7 @@ let vastuSuhasCal = {
                 if (vruna1Mod8 == 0) {
                     vruna1Mod8 = 12;
                 }
-                return {"col1":this.mValuesTypes[type], "col2":dhana, "col3":dhanaMod12,"col4":dhanaMod12,"col5":this.getDhanaVrunaString(vruna1Mod8, dhanaMod12), "col6":this.getDhanaVrunaGuna(vruna1Mod8, dhanaMod12)};
+                return { "col1": this.mValuesTypes[type], "col2": dhana, "col3": dhanaMod12, "col4": dhanaMod12, "col5": this.getDhanaVrunaString(vruna1Mod8, dhanaMod12), "col6": this.getDhanaVrunaGuna(vruna1Mod8, dhanaMod12) };
             case 3:
                 let dhana1Mod12 = Math.floor((khshetraphal * 8.0) % 12.0);
                 if (dhana1Mod12 == 0) {
@@ -57,43 +51,43 @@ let vastuSuhasCal = {
                 if (vrunaMod8 == 0) {
                     vrunaMod8 = 12;
                 }
-                return {"col1":this.mValuesTypes[type], "col2":vruna, "col3":vrunaMod8,"col4":vrunaMod8,"col5":this.getDhanaVrunaString(vrunaMod8, dhana1Mod12), "col6":this.getDhanaVrunaGuna(vrunaMod8, dhana1Mod12)};
+                return { "col1": this.mValuesTypes[type], "col2": vruna, "col3": vrunaMod8, "col4": vrunaMod8, "col5": this.getDhanaVrunaString(vrunaMod8, dhana1Mod12), "col6": this.getDhanaVrunaGuna(vrunaMod8, dhana1Mod12) };
             case 4:
                 let vaara = khshetraphal * 9.0;
                 let vaaraMod7 = Math.floor(vaara % 7.0);
-                return {"col1":this.mValuesTypes[type], "col2":vaara, "col3":vaaraMod7,"col4":this.getVaaraString(vaaraMod7),"col5":this.getVaaraStatus(vaaraMod7), "col6":this.getVaaraGuna(vaaraMod7)};
+                return { "col1": this.mValuesTypes[type], "col2": vaara, "col3": vaaraMod7, "col4": this.getVaaraString(vaaraMod7), "col5": this.getVaaraStatus(vaaraMod7), "col6": this.getVaaraGuna(vaaraMod7) };
             case 5:
                 let tithi = khshetraphal * 8.0;
                 let tithiMod30 = Math.floor(tithi % 30.0);
-                return {"col1":this.mValuesTypes[type], "col2":tithi, "col3":tithiMod30,"col4":this.getTithiString(tithiMod30),"col5":this.getTiThiStatus(tithiMod30), "col6":this.getTithiGuna(tithiMod30)};
+                return { "col1": this.mValuesTypes[type], "col2": tithi, "col3": tithiMod30, "col4": this.getTithiString(tithiMod30), "col5": this.getTiThiStatus(tithiMod30), "col6": this.getTithiGuna(tithiMod30) };
             case 6:
                 let nakshatra = khshetraphal * 8.0;
                 let nakshatraMod27 = Math.floor(nakshatra % 27.0);
-                return {"col1":this.mValuesTypes[type], "col2":nakshatra, "col3":nakshatraMod27,"col4":this.getNakshatraString(nakshatraMod27),"col5":this.getNakshatraStatus(nakshatraMod27), "col6":this.getNakshatraGuna(nakshatraMod27)};
+                return { "col1": this.mValuesTypes[type], "col2": nakshatra, "col3": nakshatraMod27, "col4": this.getNakshatraString(nakshatraMod27), "col5": this.getNakshatraStatus(nakshatraMod27), "col6": this.getNakshatraGuna(nakshatraMod27) };
             case 7:
                 let yoga = khshetraphal * 4.0;
                 let yogaMod27 = Math.floor(yoga % 27.0);
-                return {"col1":this.mValuesTypes[type], "col2":yoga, "col3":yogaMod27,"col4":this.getYogaString(yogaMod27),"col5":this.getYogaStatus(yogaMod27), "col6":this.getYugaGuna(yogaMod27)};
+                return { "col1": this.mValuesTypes[type], "col2": yoga, "col3": yogaMod27, "col4": this.getYogaString(yogaMod27), "col5": this.getYogaStatus(yogaMod27), "col6": this.getYugaGuna(yogaMod27) };
             case 8:
                 let karana = khshetraphal * 5.0;
                 let karanaMod11 = Math.floor(karana % 11.0);
-                return {"col1":this.mValuesTypes[type], "col2":karana, "col3":karanaMod11,"col4":this.getKaranaString(karanaMod11),"col5":this.getKaranaStatus(karanaMod11), "col6":this.getKaranaGuna(karanaMod11)};
+                return { "col1": this.mValuesTypes[type], "col2": karana, "col3": karanaMod11, "col4": this.getKaranaString(karanaMod11), "col5": this.getKaranaStatus(karanaMod11), "col6": this.getKaranaGuna(karanaMod11) };
             case 9:
                 let amsha = khshetraphal * 6.0;
                 let amshaMod9 = Math.floor(amsha % 9.0);
                 let col4 = amshaMod9 == 0 ? 9 : amshaMod9;
-                return {"col1":this.mValuesTypes[type], "col2":amsha, "col3":amshaMod9,"col4":col4,"col5":this.getAmshaStatus(amshaMod9), "col6":this.getAmshaGuna(amshaMod9)};
+                return { "col1": this.mValuesTypes[type], "col2": amsha, "col3": amshaMod9, "col4": col4, "col5": this.getAmshaStatus(amshaMod9), "col6": this.getAmshaGuna(amshaMod9) };
             case 10:
                 let ayushya = khshetraphal * 9.0;
                 let ayushyaMod120 = Math.floor(ayushya % 120.0);
-                return {"col1":this.mValuesTypes[type], "col2":ayushya, "col3":ayushyaMod120,"col4":ayushyaMod120,"col5":this.getAyushyaStatus(ayushyaMod120), "col6":this.getAyushyaGuna(ayushyaMod120)};
+                return { "col1": this.mValuesTypes[type], "col2": ayushya, "col3": ayushyaMod120, "col4": ayushyaMod120, "col5": this.getAyushyaStatus(ayushyaMod120), "col6": this.getAyushyaGuna(ayushyaMod120) };
             case 11:
                 let ayushya1Mod8 = Math.floor(((Math.floor((khshetraphal * 9.0) % 120.0)) % 8));
-                return {"col1":this.mValuesTypes[type], "col2":"", "col3":ayushya1Mod8,"col4":this.getDikPalakString(ayushya1Mod8),"col5":this.getDikPalakStatus(ayushya1Mod8), "col6":this.getDikpalakGuna(ayushya1Mod8)};
+                return { "col1": this.mValuesTypes[type], "col2": "", "col3": ayushya1Mod8, "col4": this.getDikPalakString(ayushya1Mod8), "col5": this.getDikPalakStatus(ayushya1Mod8), "col6": this.getDikpalakGuna(ayushya1Mod8) };
             default:
-                return {"col1":"", "col2":"", "col3":"","col4":"","col5":"", "col6":""};
+                return { "col1": "", "col2": "", "col3": "", "col4": "", "col5": "", "col6": "" };
         }
-    },getAayaString(mod8) {
+    }, getAayaString(mod8) {
         switch (mod8) {
             case 0:
                 return "KAKAYA NOT GOOD";
@@ -114,7 +108,7 @@ let vastuSuhasCal = {
             default:
                 return "";
         }
-    },getDhanaVrunaString(vrunaMod8, dhanaMod12) {
+    }, getDhanaVrunaString(vrunaMod8, dhanaMod12) {
         if (dhanaMod12 - vrunaMod8 > 0) {
             return "GOOD";
         }
@@ -138,7 +132,7 @@ let vastuSuhasCal = {
             default:
                 return "";
         }
-    },getVaaraGuna(vaaraMod7) {
+    }, getVaaraGuna(vaaraMod7) {
         switch (vaaraMod7) {
             case 1:
             case 2:
@@ -149,7 +143,7 @@ let vastuSuhasCal = {
             default:
                 return 0;
         }
-    },getVaaraStatus(vaaraMod7) {
+    }, getVaaraStatus(vaaraMod7) {
         switch (vaaraMod7) {
             case 0:
                 return "NORMAL-LOSS";
@@ -168,7 +162,7 @@ let vastuSuhasCal = {
             default:
                 return "";
         }
-    },getTithiGuna(tithiMod30) {
+    }, getTithiGuna(tithiMod30) {
         switch (tithiMod30) {
             case 0:
             case 1:
@@ -181,12 +175,12 @@ let vastuSuhasCal = {
             default:
                 return 1;
         }
-    },getTiThiStatus(tithiMod30) {
+    }, getTiThiStatus(tithiMod30) {
         if (tithiMod30 == 0 || 1 == tithiMod30 || 4 == tithiMod30 || 8 == tithiMod30 || 9 == tithiMod30 || 14 == tithiMod30 || 15 == tithiMod30) {
             return "NOT GOOD";
         }
         return "GOOD";
-    },getTithiString(tithiMod30) {
+    }, getTithiString(tithiMod30) {
         switch (tithiMod30) {
             case 0:
                 return "AMAVASYA";
@@ -251,7 +245,7 @@ let vastuSuhasCal = {
             default:
                 return "";
         }
-    },getYogaStatus(yogaMod27) {
+    }, getYogaStatus(yogaMod27) {
         switch (yogaMod27) {
             case 0:
             case 1:
@@ -285,7 +279,7 @@ let vastuSuhasCal = {
             default:
                 return "";
         }
-    },getYogaString(yogaMod27) {
+    }, getYogaString(yogaMod27) {
         switch (yogaMod27) {
             case 0:
                 return "VAIDRUTI";
@@ -369,7 +363,7 @@ let vastuSuhasCal = {
             default:
                 return 0;
         }
-    },getKaranaGuna(karanaMod11) {
+    }, getKaranaGuna(karanaMod11) {
         switch (karanaMod11) {
             case 1:
             case 2:
@@ -380,7 +374,7 @@ let vastuSuhasCal = {
             default:
                 return 0;
         }
-    },getKaranaStatus(karanaMod11) {
+    }, getKaranaStatus(karanaMod11) {
         switch (karanaMod11) {
             case 0:
             case 6:
@@ -398,7 +392,7 @@ let vastuSuhasCal = {
             default:
                 return "";
         }
-    },getKaranaString(karanaMod11) {
+    }, getKaranaString(karanaMod11) {
         switch (karanaMod11) {
             case 0:
                 return "KINSUGNA";
@@ -425,7 +419,7 @@ let vastuSuhasCal = {
             default:
                 return "";
         }
-    },getAmshaGuna(amshaMod9) {
+    }, getAmshaGuna(amshaMod9) {
         switch (amshaMod9) {
             case 0:
             case 2:
@@ -436,7 +430,7 @@ let vastuSuhasCal = {
             default:
                 return 0;
         }
-    },getAmshaStatus(amshaMod9) {
+    }, getAmshaStatus(amshaMod9) {
         switch (amshaMod9) {
             case 0:
                 return "HAPPY LIFE";
@@ -463,7 +457,7 @@ let vastuSuhasCal = {
             return 1;
         }
         return 0;
-    },getAyushyaStatus(ayushyaMod120) {
+    }, getAyushyaStatus(ayushyaMod120) {
         if (ayushyaMod120 >= 60) {
             return "GOOD";
         }
@@ -471,7 +465,7 @@ let vastuSuhasCal = {
             return "MEDIUM";
         }
         return "NOT GOOD";
-    },getDikpalakGuna(ayushya1Mod8) {
+    }, getDikpalakGuna(ayushya1Mod8) {
         switch (ayushya1Mod8) {
             case 0:
             case 1:
@@ -482,7 +476,7 @@ let vastuSuhasCal = {
             default:
                 return 0;
         }
-    },getDikPalakStatus(ayushya1Mod8) {
+    }, getDikPalakStatus(ayushya1Mod8) {
         switch (ayushya1Mod8) {
             case 0:
             case 1:
@@ -497,7 +491,7 @@ let vastuSuhasCal = {
             default:
                 return "";
         }
-    },getDikPalakString(ayushya1Mod8) {
+    }, getDikPalakString(ayushya1Mod8) {
         switch (ayushya1Mod8) {
             case 0:
                 return "ISHA";
@@ -518,7 +512,7 @@ let vastuSuhasCal = {
             default:
                 return "";
         }
-    },getPhalString(mTotalGuna) {
+    }, getPhalString(mTotalGuna) {
         if (mTotalGuna >= 10.0) {
             return "Shreshtha";
         }
@@ -526,9 +520,9 @@ let vastuSuhasCal = {
             return "Uttam";
         }
         return "Not Good";
-    },getDhanaVrunaGuna(vrunaMod8,dhanaMod12) {
+    }, getDhanaVrunaGuna(vrunaMod8, dhanaMod12) {
         return (dhanaMod12 - vrunaMod8 > 0 ? 1 : 0);
-    },getNakshatraString(nakshatraMod27) {
+    }, getNakshatraString(nakshatraMod27) {
         switch (nakshatraMod27) {
             case 0:
                 return "REVATI";
@@ -587,7 +581,7 @@ let vastuSuhasCal = {
             default:
                 return "";
         }
-    },getNakshatraStatus(nakshatraMod27) {
+    }, getNakshatraStatus(nakshatraMod27) {
         switch (nakshatraMod27) {
             case 0:
             case 4:
@@ -621,7 +615,7 @@ let vastuSuhasCal = {
             default:
                 return "";
         }
-    },getNakshatraGuna(nakshatraMod27) {
+    }, getNakshatraGuna(nakshatraMod27) {
         switch (nakshatraMod27) {
             case 0:
             case 4:
