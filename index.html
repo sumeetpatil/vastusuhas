@@ -1,15 +1,33 @@
 <html>
+
 <head>
     <title>Vastu Suhas</title>
-    <script src="vastuCal.js"></script>
+    <script src="./js/vastuCal.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <input type="number" id="inpLength" />
-    <input type="number" id="inpWidth" />
-    <button id="btlCal">Calculate</button>
-    <table border=1 id="tblCal"></table>
-    <script src="common.js"></script>
+    <div class="form-group">
+        <label for="inpLength">Length:</label>
+        <input type="number" class="form-control" id="inpLength">
+    </div>
+    <div class="form-group">
+        <label for="inpWidth">Width:</label>
+        <input type="number" class="form-control" id="inpWidth">
+    </div>
+    <button class="btn btn-primary" id="btlCal">Calculate</button>
+    <table class="table table-bordered" id="tblCal"></table>
+    <footer>
+        <div class="container">
+            <span class="text-muted">Vastu Consultant</span></br>
+            <span class="text-muted"><a>suhasnilajkar1@gmail.com</a></span>
+        </div>
+    </footer>
+    <script src="./js/common.js"></script>
 </body>
 
 </html>
