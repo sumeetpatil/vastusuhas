@@ -22,5 +22,5 @@ jobs:
           cd vastusuhas
           npm install
           chmod +x start.sh stop.sh
-          ./stop.sh
-          ./start.sh
+          sh stop.sh
+          sh start.sh
