@@ -7,7 +7,7 @@ document.getElementById("btlCal").onclick = function () {
         tbl += "<tr><td>" + obj.cols[i].col1 + "</td><td>" + obj.cols[i].col4 + "</td><td>" + obj.cols[i].col5 + "</td><tr>";
     }
 
-    tbl += "<tr><td>" + "Total Guna" + "</td><td></td><td>" + obj.totalGuna + "</td><tr>";
-    tbl += "<tr><td>" + "Phal" + "</td><td></td><td>" + obj.phal + "</td><tr>";
+    tbl += "<tr><td>" + "<b>Total Guna</b>" + "</td><td></td><td><b>" + obj.totalGuna + "</b></td><tr>";
+    tbl += "<tr><td>" + "<b>Phal</b>" + "</td><td></td><td><b>" + obj.phal + "</b></td><tr>";
     document.getElementById("tblCal").innerHTML = tbl;
 };
