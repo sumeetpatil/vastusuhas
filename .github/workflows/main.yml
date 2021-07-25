@@ -18,8 +18,9 @@ jobs:
         script: |
           cd /root/nodejsPgm/vastusuhasnode
           rm -rf vastusuhas
-          git clone git@github.com:sumeetpatil/vastusuhas.git
+          git lfs clone git@github.com:sumeetpatil/vastusuhas.git
           cd vastusuhas
+          npm install
           chmod +x start.sh stop.sh
           ./stop.sh
           ./start.sh
