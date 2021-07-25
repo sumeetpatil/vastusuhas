@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "npx forever start -o out.log -e err.log index.js",
-        "stop": "npx forever stop"
+        "stop": "npx forever stop index.js"
     },
     "author": "",
     "license": "ISC",
