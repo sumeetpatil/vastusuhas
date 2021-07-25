@@ -24,4 +24,3 @@ jobs:
           chmod +x start.sh stop.sh
           sh stop.sh
           sh start.sh
-          exit
