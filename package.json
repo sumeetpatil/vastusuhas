@@ -4,11 +4,14 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "npx forever start -o out.log -e err.log index.js",
+        "stop": "npx forever stop"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "express": "^4.17.1"
-      }
-  }
+        "express": "^4.17.1",
+        "forever": "^4.0.1"
+    }
+}
