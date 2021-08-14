@@ -641,3 +641,5 @@ let vastuSuhasCal = {
 
 //let calculate = vastuSuhasCal.calculate(1.5, 11.5);
 //console.log(calculate);
+
+exports.vastu = vastuSuhasCal;
